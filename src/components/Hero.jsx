@@ -229,8 +229,11 @@ const Hero = () => {
                 className="space-y-4"
               >
                 <h1 className="text-4xl lg:text-5xl font-bold text-white">
-                  I automate your business & build beautiful web experiences.
+                  Hi, I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">Kayode Daniel</span>
                 </h1>
+                <h2 className="text-3xl lg:text-4xl font-bold text-white mt-2">
+                  I automate your business & build beautiful web experiences.
+                </h2>
                 <div className="text-3xl lg:text-4xl font-bold relative">
                   <TypewriterText words={typingWords} />
                 </div>
