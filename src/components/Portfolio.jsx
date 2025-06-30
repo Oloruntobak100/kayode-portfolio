@@ -402,53 +402,53 @@ const Portfolio = () => {
 
       {/* Enhanced Category Modal */}
       {selectedCategory && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
-          <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-2xl rounded-3xl max-w-7xl w-full max-h-[95vh] overflow-y-auto animate-in slide-in-from-bottom-12 duration-700 border border-white/20 shadow-2xl">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-2 md:p-4 animate-in fade-in duration-300">
+          <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-2xl rounded-xl md:rounded-3xl max-w-7xl w-full max-h-[95vh] overflow-y-auto animate-in slide-in-from-bottom-12 duration-700 border border-white/20 shadow-2xl">
             
             {/* Enhanced Modal Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-slate-800/95 to-slate-900/95 backdrop-blur-2xl p-8 border-b border-white/20 flex items-center justify-between z-10 rounded-t-3xl">
-              <div className="flex items-center gap-8">
-                <div className={`w-20 h-20 rounded-3xl bg-gradient-to-r ${selectedCategory.gradient} flex items-center justify-center shadow-2xl transform hover:scale-105 transition-all duration-500 relative overflow-hidden`}>
+            <div className="sticky top-0 bg-gradient-to-r from-slate-800/95 to-slate-900/95 backdrop-blur-2xl p-4 md:p-8 border-b border-white/20 flex items-center justify-between z-10 rounded-t-xl md:rounded-t-3xl">
+              <div className="flex items-center gap-3 md:gap-8">
+                <div className={`w-12 h-12 md:w-20 md:h-20 rounded-xl md:rounded-3xl bg-gradient-to-r ${selectedCategory.gradient} flex items-center justify-center shadow-2xl transform hover:scale-105 transition-all duration-500 relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
-                  {React.createElement(iconMap[selectedCategory.id], { className: "w-10 h-10 text-white drop-shadow-lg relative z-10" })}
+                  {React.createElement(iconMap[selectedCategory.id], { className: "w-6 h-6 md:w-10 md:h-10 text-white drop-shadow-lg relative z-10" })}
                 </div>
                 <div>
-                  <h3 className="text-4xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  <h3 className="text-xl sm:text-2xl md:text-4xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     {selectedCategory.title}
                   </h3>
-                  <p className="text-gray-400 text-xl flex items-center gap-3 mt-2">
-                    <Star className="w-5 h-5 text-yellow-400 animate-pulse" />
+                  <p className="text-gray-400 text-sm md:text-xl flex items-center gap-1 md:gap-3 mt-1 md:mt-2">
+                    <Star className="w-3 h-3 md:w-5 md:h-5 text-yellow-400 animate-pulse" />
                     {selectedCategory.projects.length} Premium Projects
-                    <Zap className="w-5 h-5 text-cyan-400 animate-bounce" />
+                    <Zap className="w-3 h-3 md:w-5 md:h-5 text-cyan-400 animate-bounce" />
                   </p>
                 </div>
               </div>
               <button
                 onClick={closeModal}
-                className="w-14 h-14 rounded-2xl bg-gradient-to-r from-red-500/20 to-pink-500/20 hover:from-red-500/40 hover:to-pink-500/40 border border-red-400/30 flex items-center justify-center transition-all duration-300 hover:scale-110 group backdrop-blur-sm"
+                className="w-8 h-8 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-r from-red-500/20 to-pink-500/20 hover:from-red-500/40 hover:to-pink-500/40 border border-red-400/30 flex items-center justify-center transition-all duration-300 hover:scale-110 group backdrop-blur-sm"
               >
-                <X className="w-7 h-7 text-red-300 group-hover:text-red-200 transition-colors duration-200 group-hover:rotate-90" />
+                <X className="w-4 h-4 md:w-7 md:h-7 text-red-300 group-hover:text-red-200 transition-colors duration-200 group-hover:rotate-90" />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-8">
-              <div className="mb-12 text-center">
-                <p className="text-gray-300 text-xl max-w-4xl mx-auto leading-relaxed">
+            <div className="p-4 md:p-8">
+              <div className="mb-6 md:mb-12 text-center">
+                <p className="text-gray-300 text-sm md:text-xl max-w-4xl mx-auto leading-relaxed">
                   {selectedCategory.description}
                 </p>
               </div>
               
               {/* Enhanced Project Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
                 {selectedCategory.projects.map((project, index) => (
                   <div
                     key={project.id}
-                    className="bg-gradient-to-br from-white/10 to-white/5 rounded-3xl overflow-hidden border border-white/20 hover:border-blue-400/50 transition-all duration-500 cursor-pointer group hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 transform-gpu backdrop-blur-lg"
+                    className="bg-gradient-to-br from-white/10 to-white/5 rounded-xl md:rounded-3xl overflow-hidden border border-white/20 hover:border-blue-400/50 transition-all duration-500 cursor-pointer group hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 transform-gpu backdrop-blur-lg"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div 
-                      className="relative h-48 overflow-hidden"
+                      className="relative h-36 md:h-48 overflow-hidden"
                       onClick={(e) => handleLinkClick(project.demoUrl, e)}
                     >
                       <img 
@@ -460,8 +460,8 @@ const Portfolio = () => {
                       <div className={`absolute inset-0 bg-gradient-to-br ${selectedCategory.gradient} opacity-0 group-hover:opacity-20 transition-all duration-500`} />
                       
                       {/* Status Badge */}
-                      <div className="absolute top-4 left-4">
-                        <span className={`px-4 py-2 rounded-full text-sm font-bold backdrop-blur-lg border ${
+                      <div className="absolute top-2 md:top-4 left-2 md:left-4">
+                        <span className={`px-2 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-bold backdrop-blur-lg border ${
                           project.status === 'Completed' 
                             ? 'bg-green-500/20 text-green-300 border-green-400/40' 
                             : 'bg-yellow-500/20 text-yellow-300 border-yellow-400/40'
@@ -471,13 +471,13 @@ const Portfolio = () => {
                       </div>
 
                       {/* View Button */}
-                      <div className="absolute bottom-4 right-4">
+                      <div className="absolute bottom-2 md:bottom-4 right-2 md:right-4">
                         <button 
                           onClick={(e) => handleLinkClick(project.demoUrl, e)}
-                          className={`w-12 h-12 bg-gradient-to-r ${selectedCategory.gradient} bg-opacity-30 backdrop-blur-lg rounded-full flex items-center justify-center hover:bg-opacity-50 transition-all duration-300 hover:scale-125 shadow-xl border border-white/30 group-hover:animate-pulse`}
+                          className={`w-8 h-8 md:w-12 md:h-12 bg-gradient-to-r ${selectedCategory.gradient} bg-opacity-30 backdrop-blur-lg rounded-full flex items-center justify-center hover:bg-opacity-50 transition-all duration-300 hover:scale-125 shadow-xl border border-white/30 group-hover:animate-pulse`}
                           title="View Project"
                         >
-                          <Eye className="w-6 h-6 text-white drop-shadow-lg" />
+                          <Eye className="w-4 h-4 md:w-6 md:h-6 text-white drop-shadow-lg" />
                         </button>
                       </div>
                     </div>
@@ -542,19 +542,19 @@ const Portfolio = () => {
 
       {/* Enhanced Project Detail Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-60 flex items-center justify-center p-4 animate-in fade-in duration-300">
-          <div className="bg-gradient-to-br from-slate-800/95 to-slate-900/95 backdrop-blur-2xl rounded-3xl max-w-6xl w-full max-h-[90vh] overflow-y-auto animate-in slide-in-from-bottom-8 duration-500 border border-white/20 shadow-2xl">
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-60 flex items-center justify-center p-2 md:p-4 animate-in fade-in duration-300">
+          <div className="bg-gradient-to-br from-slate-800/95 to-slate-900/95 backdrop-blur-2xl rounded-xl md:rounded-3xl max-w-6xl w-full max-h-[90vh] overflow-y-auto animate-in slide-in-from-bottom-8 duration-500 border border-white/20 shadow-2xl">
             
             {/* Modal Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-slate-800/98 to-slate-900/98 backdrop-blur-2xl p-8 border-b border-white/20 flex items-center justify-between rounded-t-3xl">
-              <h3 className="text-3xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <div className="sticky top-0 bg-gradient-to-r from-slate-800/98 to-slate-900/98 backdrop-blur-2xl p-4 md:p-8 border-b border-white/20 flex items-center justify-between rounded-t-xl md:rounded-t-3xl">
+              <h3 className="text-xl md:text-3xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 {selectedProject.title}
               </h3>
               <button
                 onClick={closeModal}
-                className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group backdrop-blur-sm border border-white/20"
+                className="w-8 h-8 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group backdrop-blur-sm border border-white/20"
               >
-                <X className="w-6 h-6 text-white group-hover:rotate-90 transition-transform duration-300" />
+                <X className="w-4 h-4 md:w-6 md:h-6 text-white group-hover:rotate-90 transition-transform duration-300" />
               </button>
             </div>
 

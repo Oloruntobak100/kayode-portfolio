@@ -173,19 +173,19 @@ export default function EnhancedTestimonialSlider() {
 
       <div className="container max-w-6xl mx-auto px-4 relative z-10">
         {/* Enhanced Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-slate-800/50 backdrop-blur-xl rounded-full px-8 py-3 mb-6">
-            <Sparkles className="w-5 h-5 text-yellow-400" />
-            <span className="text-white/90 font-semibold tracking-wide">Success Stories</span>
+        <div className="text-center mb-10 md:mb-16">
+          <div className="inline-flex items-center gap-2 md:gap-3 bg-slate-800/50 backdrop-blur-xl rounded-full px-4 md:px-8 py-2 md:py-3 mb-4 md:mb-6">
+            <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" />
+            <span className="text-white/90 font-semibold tracking-wide text-sm md:text-base">Success Stories</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6 leading-tight">
             <span className="bg-gradient-to-r from-white via-slate-200 to-white/80 bg-clip-text text-transparent">
               Trusted by Industry Leaders
             </span>
           </h2>
 
-          <p className="text-base text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed px-4">
             Join thousands of visionaries who've revolutionized their business with our cutting-edge solutions
           </p>
         </div>
@@ -234,18 +234,18 @@ export default function EnhancedTestimonialSlider() {
                     zIndex: isActive ? 20 : 10
                   }}
                 >
-                  <div className="bg-slate-800/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-white/10 shadow-xl">
+                  <div className="bg-slate-800/95 backdrop-blur-xl rounded-3xl p-4 md:p-6 lg:p-8 border border-white/10 shadow-xl">
                     {/* Industry Badge */}
-                    <div className="absolute top-4 right-4">
-                      <div className="bg-slate-700/50 rounded-full px-4 py-2 text-sm text-white/90 font-medium border border-white/10">
+                    <div className="absolute top-3 md:top-4 right-3 md:right-4">
+                      <div className="bg-slate-700/50 rounded-full px-2 md:px-4 py-1 md:py-2 text-xs md:text-sm text-white/90 font-medium border border-white/10">
                         {testimonial.industry}
                       </div>
                     </div>
 
                     {/* Quote Icon */}
-                    <div className="mb-6">
-                      <div className="inline-flex p-3 rounded-xl bg-slate-700/50">
-                        <Quote className="w-6 h-6 text-white/80" />
+                    <div className="mb-4 md:mb-6">
+                      <div className="inline-flex p-2 md:p-3 rounded-xl bg-slate-700/50">
+                        <Quote className="w-4 h-4 md:w-6 md:h-6 text-white/80" />
                       </div>
                     </div>
 

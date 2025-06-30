@@ -72,6 +72,7 @@ const ScrollProgress = () => {
 
 const TopNav = () => {
   const [activeSection, setActiveSection] = useState('hero');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   const navY = useTransform(scrollY, [0, 100], [0, -10]);
   const navOpacity = useTransform(scrollY, [0, 50, 100], [1, 0.8, 0.95]);
@@ -111,6 +112,9 @@ const TopNav = () => {
     const element = document.getElementById(targetId);
     if (!element) return;
 
+    // Close mobile menu if it's open
+    setMobileMenuOpen(false);
+
     const targetPosition = element.offsetTop - 80;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
@@ -146,21 +150,37 @@ const TopNav = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="relative">
-              <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center text-white text-xl font-bold mr-3">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-cyan-500 rounded-lg flex items-center justify-center text-white text-lg md:text-xl font-bold mr-2 md:mr-3">
                 KD
                 {/* Online status indicator */}
-                <div className="absolute -top-1 right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full ring-2 ring-black animate-pulse"></div>
+                <div className="absolute -top-1 right-1 w-2 h-2 md:w-2.5 md:h-2.5 bg-emerald-400 rounded-full ring-2 ring-black animate-pulse"></div>
               </div>
             </div>
             <div>
-              <h1 className="text-white text-xl font-bold">Kayode Daniel</h1>
-              <p className="text-cyan-400 text-sm">Digital Craftsman</p>
+              <h1 className="text-white text-base md:text-xl font-bold">Kayode Daniel</h1>
+              <p className="text-cyan-400 text-xs md:text-sm">Digital Craftsman</p>
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Mobile Menu Button */}
+          <div className="block md:hidden">
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg bg-white/5 backdrop-blur-xl border border-white/10"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5 text-white" />
+              ) : (
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {/* Desktop Navigation */}
           <motion.div
-            className="flex justify-center"
+            className="hidden md:flex justify-center"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -194,7 +214,7 @@ const TopNav = () => {
                         )}
                         <span className="relative z-10 flex items-center gap-2">
                           {section.icon}
-                          <span className="hidden sm:inline">{section.label}</span>
+                          <span className="inline">{section.label}</span>
                         </span>
                       </motion.button>
                     </div>
@@ -204,6 +224,42 @@ const TopNav = () => {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden mt-4 overflow-hidden"
+            >
+              <div className="bg-white/5 backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
+                <div className="flex flex-col space-y-2">
+                  {sections.map((section) => {
+                    const isActive = activeSection === section.id;
+                    return (
+                      <motion.button
+                        key={section.id}
+                        onClick={() => smoothScrollTo(section.id)}
+                        className={`relative px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-3 ${
+                          isActive 
+                            ? 'bg-gradient-to-r ' + section.color + ' text-white' 
+                            : 'text-white/80 hover:bg-white/10'
+                        }`}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {section.icon}
+                        <span>{section.label}</span>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

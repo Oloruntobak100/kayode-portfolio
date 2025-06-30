@@ -74,33 +74,33 @@ const EmailModal = ({ isOpen, onClose }) => {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden relative"
+            className="bg-white rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-[90%] md:max-w-md overflow-hidden relative"
             onClick={e => e.stopPropagation()}
           >
             {/* Animated background gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-50"></div>
             
             {/* Header */}
-            <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-8 py-10 text-white text-center">
+            <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-4 md:px-8 py-6 md:py-10 text-white text-center">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <h3 className="text-3xl font-bold mb-3 tracking-tight">Let's Connect!</h3>
-                <p className="text-blue-100 text-lg">Fill in your details and I'll get back to you soon.</p>
+                <h3 className="text-2xl md:text-3xl font-bold mb-2 md:mb-3 tracking-tight">Let's Connect!</h3>
+                <p className="text-blue-100 text-base md:text-lg">Fill in your details and I'll get back to you soon.</p>
               </motion.div>
               
               {/* Floating elements */}
-              <div className="absolute top-4 left-4 w-6 h-6 bg-white/20 rounded-full animate-pulse"></div>
-              <div className="absolute bottom-4 right-4 w-4 h-4 bg-white/30 rounded-full animate-pulse delay-1000"></div>
+              <div className="absolute top-4 left-4 w-4 md:w-6 h-4 md:h-6 bg-white/20 rounded-full animate-pulse"></div>
+              <div className="absolute bottom-4 right-4 w-3 md:w-4 h-3 md:h-4 bg-white/30 rounded-full animate-pulse delay-1000"></div>
               
               {/* Close button */}
               <button
                 onClick={onClose}
-                className="absolute top-6 right-6 text-white/80 hover:text-white transition-all duration-200 hover:scale-110 hover:rotate-90 bg-white/10 rounded-full p-2"
+                className="absolute top-3 md:top-6 right-3 md:right-6 text-white/80 hover:text-white transition-all duration-200 hover:scale-110 hover:rotate-90 bg-white/10 rounded-full p-2"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -109,25 +109,25 @@ const EmailModal = ({ isOpen, onClose }) => {
             {/* Form */}
             <motion.form 
               onSubmit={handleSubmit} 
-              className="relative p-8 space-y-6"
+              className="relative p-4 md:p-8 space-y-4 md:space-y-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <div className="space-y-5">
+              <div className="space-y-4 md:space-y-5">
                 <motion.div 
                   className="group"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2 group-hover:text-blue-600 transition-colors">
+                  <label htmlFor="name" className="block text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2 group-hover:text-blue-600 transition-colors">
                     Name
                   </label>
                   <input
                     type="text"
                     id="name"
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 text-gray-900 placeholder-gray-400 hover:border-gray-300"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg md:rounded-xl border-2 border-gray-200 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 text-gray-900 placeholder-gray-400 hover:border-gray-300 text-sm md:text-base"
                     placeholder="Your awesome name"
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}

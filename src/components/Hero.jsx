@@ -228,13 +228,13 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="space-y-4"
               >
-                <h1 className="text-4xl lg:text-5xl font-bold text-white">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
                   Hi, I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">Kayode Daniel</span>
                 </h1>
-                <h2 className="text-3xl lg:text-4xl font-bold text-white mt-2">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-2">
                   I automate your business & build beautiful web experiences.
                 </h2>
-                <div className="text-3xl lg:text-4xl font-bold relative">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold relative">
                   <TypewriterText words={typingWords} />
                 </div>
               </motion.div>
@@ -309,7 +309,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative w-full h-[600px] flex items-center justify-center"
+              className="relative w-full h-[400px] md:h-[600px] hidden md:flex items-center justify-center"
             >
               {/* Animated Background Shape */}
               <div className="absolute w-[120%] h-[120%] animate-blob-spin">
@@ -321,7 +321,7 @@ const Hero = () => {
                 initial={{ y: 20 }}
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-[450px] h-[450px] rounded-full overflow-hidden border-4 border-white/10 shadow-2xl"
+                className="relative w-[350px] h-[350px] md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-4 border-white/10 shadow-2xl"
               >
                 <img
                   src={profileImage}
