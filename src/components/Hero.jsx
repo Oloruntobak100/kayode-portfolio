@@ -229,10 +229,10 @@ const Hero = () => {
                 className="space-y-4"
               >
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-                  Hi, I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white-500 to-white-600">Kayode Daniel</span>
+                  Hi, I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">Kayode Daniel</span>
                 </h1>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-2">
-                  I Build Automations That Powers Your Business. So you can focus on what really matters. Let's Automate Your Entire Workflows
+                  I Build Automations That Powers Your Business
                 </h2>
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-bold relative">
                   <TypewriterText words={typingWords} />

@@ -179,28 +179,28 @@ const Testimonials = () => {
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
-        {/* Subtle Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" 
-               style={{
-                 backgroundImage: `radial-gradient(circle at 25% 25%, rgba(148, 163, 184, 0.1) 0%, transparent 50%),
-                                  radial-gradient(circle at 75% 75%, rgba(148, 163, 184, 0.05) 0%, transparent 50%)`,
-                 backgroundSize: '400px 400px'
-               }} />
-        </div>
+      {/* Subtle Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" 
+             style={{
+               backgroundImage: `radial-gradient(circle at 25% 25%, rgba(148, 163, 184, 0.1) 0%, transparent 50%),
+                                radial-gradient(circle at 75% 75%, rgba(148, 163, 184, 0.05) 0%, transparent 50%)`,
+               backgroundSize: '400px 400px'
+             }} />
+      </div>
 
-        {/* Gentle Floating Particles */}
-        {Array.from({ length: 15 }).map((_, i) => (
-          <FloatingParticle 
-            key={i} 
-            delay={i * 0.5} 
-            color={["slate", "purple", "blue", "emerald"][i % 4]}
-          />
-        ))}
+      {/* Gentle Floating Particles */}
+      {Array.from({ length: 15 }).map((_, i) => (
+        <FloatingParticle 
+          key={i} 
+          delay={i * 0.5} 
+          color={["slate", "purple", "blue", "emerald"][i % 4]}
+        />
+      ))}
 
-        {/* Soft Gradient Orbs */}
-        <div className="absolute -top-32 -left-32 w-64 h-64 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full filter blur-3xl"></div>
-        <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-l from-blue-500/10 to-purple-500/10 rounded-full filter blur-3xl"></div>
+      {/* Soft Gradient Orbs */}
+      <div className="absolute -top-32 -left-32 w-64 h-64 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full filter blur-3xl"></div>
+      <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-l from-blue-500/10 to-purple-500/10 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="relative container mx-auto px-4 z-10">
@@ -214,7 +214,7 @@ const Testimonials = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">What Clients Say</span>
           </h2>
-          
+
           <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Don't just take my word for it. Here's what clients have to say about their experiences working with me.
           </p>
@@ -231,38 +231,38 @@ const Testimonials = () => {
               style={{ transitionDelay: `${index * 0.1}s` }}
             >
               <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-4 sm:p-6 border border-white/10 hover:border-white/20 transition-all duration-500 group hover:transform hover:scale-105">
-                {/* Quote Icon */}
+                    {/* Quote Icon */}
                 <div className="mb-4">
                   <svg className="w-8 h-8 text-purple-400 opacity-50" fill="currentColor" viewBox="0 0 32 32">
                     <path d="M10 8v8H6v-8h4zm12 0v8h-4v-8h4zm-11 8v6H7c-1.657 0-3-1.343-3-3v-3h4zm12 0v6h-4c-1.657 0-3-1.343-3-3v-3h4z"/>
                   </svg>
-                </div>
-                
+                    </div>
+
                 {/* Testimonial Content */}
                 <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-                  {testimonial.content}
-                </p>
+                        {testimonial.content}
+                      </p>
                 
                 {/* Client Info */}
                 <div className="flex items-center">
                   <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3 sm:mr-4">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-full h-full object-cover"
-                    />
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-full h-full object-cover"
+                        />
                     <div className="absolute inset-0 ring-2 ring-purple-500/20 rounded-full"></div>
-                  </div>
-                  <div>
+                      </div>
+                      <div>
                     <h4 className="text-sm sm:text-base font-semibold text-white">
-                      {testimonial.name}
-                    </h4>
+                          {testimonial.name}
+                        </h4>
                     <p className="text-xs sm:text-sm text-gray-400">
-                      {testimonial.position}
-                    </p>
+                          {testimonial.position}
+                        </p>
                   </div>
                 </div>
-              </div>
+          </div>
             </motion.div>
           ))}
         </div>
