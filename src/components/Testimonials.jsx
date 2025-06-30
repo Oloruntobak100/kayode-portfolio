@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote, Award, Users, Clock, Sparkles, TrendingUp, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const testimonials = [
   {
@@ -103,11 +104,12 @@ const FloatingParticle = ({ delay = 0, color = "slate" }) => {
   );
 };
 
-export default function EnhancedTestimonialSlider() {
+const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [direction, setDirection] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (!isAutoPlay || isTransitioning) return;
@@ -147,168 +149,96 @@ export default function EnhancedTestimonialSlider() {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" 
-             style={{
-               backgroundImage: `radial-gradient(circle at 25% 25%, rgba(148, 163, 184, 0.1) 0%, transparent 50%),
-                                radial-gradient(circle at 75% 75%, rgba(148, 163, 184, 0.05) 0%, transparent 50%)`,
-               backgroundSize: '400px 400px'
-             }} />
+    <section className="relative py-16 sm:py-24 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" id="testimonials">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" 
+               style={{
+                 backgroundImage: `radial-gradient(circle at 25% 25%, rgba(148, 163, 184, 0.1) 0%, transparent 50%),
+                                  radial-gradient(circle at 75% 75%, rgba(148, 163, 184, 0.05) 0%, transparent 50%)`,
+                 backgroundSize: '400px 400px'
+               }} />
+        </div>
+
+        {/* Gentle Floating Particles */}
+        {Array.from({ length: 15 }).map((_, i) => (
+          <FloatingParticle 
+            key={i} 
+            delay={i * 0.5} 
+            color={["slate", "purple", "blue", "emerald"][i % 4]}
+          />
+        ))}
+
+        {/* Soft Gradient Orbs */}
+        <div className="absolute -top-32 -left-32 w-64 h-64 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-l from-blue-500/10 to-purple-500/10 rounded-full filter blur-3xl"></div>
       </div>
 
-      {/* Gentle Floating Particles */}
-      {Array.from({ length: 15 }).map((_, i) => (
-        <FloatingParticle 
-          key={i} 
-          delay={i * 0.5} 
-          color={["slate", "purple", "blue", "emerald"][i % 4]}
-        />
-      ))}
-
-      {/* Soft Gradient Orbs */}
-      <div className="absolute -top-32 -left-32 w-64 h-64 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full filter blur-3xl"></div>
-      <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-l from-blue-500/10 to-purple-500/10 rounded-full filter blur-3xl"></div>
-
-      <div className="container max-w-6xl mx-auto px-4 relative z-10">
-        {/* Enhanced Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <div className="inline-flex items-center gap-2 md:gap-3 bg-slate-800/50 backdrop-blur-xl rounded-full px-4 md:px-8 py-2 md:py-3 mb-4 md:mb-6">
-            <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" />
-            <span className="text-white/90 font-semibold tracking-wide text-sm md:text-base">Success Stories</span>
+      <div className="relative container mx-auto px-4 z-10">
+        {/* Section Header */}
+        <div className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full border border-purple-500/30 mb-4 sm:mb-6">
+            <Star className="w-4 h-4 text-purple-400" />
+            <span className="text-sm font-medium text-purple-300">Client Testimonials</span>
           </div>
           
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-white via-slate-200 to-white/80 bg-clip-text text-transparent">
-              Trusted by Industry Leaders
-            </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+            <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">What Clients Say</span>
           </h2>
-
-          <p className="text-sm md:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed px-4">
-            Join thousands of visionaries who've revolutionized their business with our cutting-edge solutions
+          
+          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Don't just take my word for it. Here's what clients have to say about their experiences working with me.
           </p>
         </div>
 
-        {/* Enhanced Testimonial Slider */}
-        <div 
-          className="relative mb-16 mx-auto max-w-[1000px] min-h-[400px]"
-          onMouseEnter={() => setIsAutoPlay(false)}
-          onMouseLeave={() => setIsAutoPlay(true)}
-        >
-          {/* Navigation Buttons */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex items-center justify-between z-30">
-            <button
-              onClick={prevSlide}
-              disabled={isTransitioning}
-              className="relative -left-6 bg-slate-800/90 hover:bg-slate-700/90 backdrop-blur-xl rounded-full p-3 border border-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.id}
+              className={`transform transition-all duration-700 ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+              }`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
-              <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-
-            <button
-              onClick={nextSlide}
-              disabled={isTransitioning}
-              className="relative -right-6 bg-slate-800/90 hover:bg-slate-700/90 backdrop-blur-xl rounded-full p-3 border border-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronRight className="w-6 h-6 text-white" />
-            </button>
-          </div>
-
-          <div className="relative">
-            {testimonials.map((testimonial, index) => {
-              const isActive = index === currentIndex;
-              const isPrev = index === (currentIndex - 1 + testimonials.length) % testimonials.length;
-              const isNext = index === (currentIndex + 1) % testimonials.length;
-              
-              let position = "opacity-0 translate-x-full";
-              if (isActive) position = "opacity-100 translate-x-0";
-              else if (isPrev) position = "opacity-0 -translate-x-full";
-              else if (isNext) position = "opacity-0 translate-x-full";
-
-              return (
-                <div
-                  key={testimonial.id}
-                  className={`absolute inset-0 w-full transition-all duration-500 ease-out ${position}`}
-                  style={{ 
-                    zIndex: isActive ? 20 : 10
-                  }}
-                >
-                  <div className="bg-slate-800/95 backdrop-blur-xl rounded-3xl p-4 md:p-6 lg:p-8 border border-white/10 shadow-xl">
-                    {/* Industry Badge */}
-                    <div className="absolute top-3 md:top-4 right-3 md:right-4">
-                      <div className="bg-slate-700/50 rounded-full px-2 md:px-4 py-1 md:py-2 text-xs md:text-sm text-white/90 font-medium border border-white/10">
-                        {testimonial.industry}
-                      </div>
-                    </div>
-
-                    {/* Quote Icon */}
-                    <div className="mb-4 md:mb-6">
-                      <div className="inline-flex p-2 md:p-3 rounded-xl bg-slate-700/50">
-                        <Quote className="w-4 h-4 md:w-6 md:h-6 text-white/80" />
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="mb-6">
-                      <p className="text-white/90 text-sm md:text-base leading-relaxed">
-                        {testimonial.content}
-                      </p>
-                    </div>
-
-                    {/* Author Section */}
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      
-                      <div>
-                        <h4 className="text-white font-bold text-base mb-0.5">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-slate-300 text-sm mb-0.5">
-                          {testimonial.position}
-                        </p>
-                        <p className="text-slate-400 text-sm font-medium">
-                          {testimonial.company}
-                        </p>
-                      </div>
-
-                      {/* Rating */}
-                      <div className="ml-auto flex gap-1">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                        ))}
-                      </div>
-                    </div>
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-4 sm:p-6 border border-white/10 hover:border-white/20 transition-all duration-500 group hover:transform hover:scale-105">
+                {/* Quote Icon */}
+                <div className="mb-4">
+                  <svg className="w-8 h-8 text-purple-400 opacity-50" fill="currentColor" viewBox="0 0 32 32">
+                    <path d="M10 8v8H6v-8h4zm12 0v8h-4v-8h4zm-11 8v6H7c-1.657 0-3-1.343-3-3v-3h4zm12 0v6h-4c-1.657 0-3-1.343-3-3v-3h4z"/>
+                  </svg>
+                </div>
+                
+                {/* Testimonial Content */}
+                <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
+                  {testimonial.content}
+                </p>
+                
+                {/* Client Info */}
+                <div className="flex items-center">
+                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden mr-3 sm:mr-4">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 ring-2 ring-purple-500/20 rounded-full"></div>
+                  </div>
+                  <div>
+                    <h4 className="text-sm sm:text-base font-semibold text-white">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-gray-400">
+                      {testimonial.position}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-
-          {/* Pagination */}
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                disabled={isTransitioning}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-white w-6' 
-                    : 'bg-white/30 hover:bg-white/50'
-                }`}
-              />
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
-
-        
       </div>
 
       <style jsx>{`
@@ -325,4 +255,6 @@ export default function EnhancedTestimonialSlider() {
       `}</style>
     </section>
   );
-}
+};
+
+export default Testimonials;

@@ -66,41 +66,36 @@ const EmailModal = ({ isOpen, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={onClose}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="bg-white rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-[90%] md:max-w-md overflow-hidden relative"
-            onClick={e => e.stopPropagation()}
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-[95%] sm:max-w-lg overflow-hidden"
           >
-            {/* Animated background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-50"></div>
-            
             {/* Header */}
-            <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-4 md:px-8 py-6 md:py-10 text-white text-center">
+            <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-4 sm:px-8 py-6 sm:py-10 text-white text-center">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <h3 className="text-2xl md:text-3xl font-bold mb-2 md:mb-3 tracking-tight">Let's Connect!</h3>
-                <p className="text-blue-100 text-base md:text-lg">Fill in your details and I'll get back to you soon.</p>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 tracking-tight">Let's Connect!</h3>
+                <p className="text-blue-100 text-base sm:text-lg">Fill in your details and I'll get back to you soon.</p>
               </motion.div>
               
               {/* Floating elements */}
-              <div className="absolute top-4 left-4 w-4 md:w-6 h-4 md:h-6 bg-white/20 rounded-full animate-pulse"></div>
-              <div className="absolute bottom-4 right-4 w-3 md:w-4 h-3 md:h-4 bg-white/30 rounded-full animate-pulse delay-1000"></div>
+              <div className="absolute top-4 left-4 w-4 sm:w-6 h-4 sm:h-6 bg-white/20 rounded-full animate-pulse"></div>
+              <div className="absolute bottom-4 right-4 w-3 sm:w-4 h-3 sm:h-4 bg-white/30 rounded-full animate-pulse delay-1000"></div>
               
               {/* Close button */}
               <button
                 onClick={onClose}
-                className="absolute top-3 md:top-6 right-3 md:right-6 text-white/80 hover:text-white transition-all duration-200 hover:scale-110 hover:rotate-90 bg-white/10 rounded-full p-2"
+                className="absolute top-4 right-4 text-white/80 hover:text-white transition-all duration-200 hover:scale-110 hover:rotate-90 bg-white/10 rounded-full p-1.5 sm:p-2"
               >
-                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -109,108 +104,63 @@ const EmailModal = ({ isOpen, onClose }) => {
             {/* Form */}
             <motion.form 
               onSubmit={handleSubmit} 
-              className="relative p-4 md:p-8 space-y-4 md:space-y-6"
+              className="relative p-4 sm:p-8 space-y-4 sm:space-y-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <div className="space-y-4 md:space-y-5">
-                <motion.div 
-                  className="group"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <label htmlFor="name" className="block text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2 group-hover:text-blue-600 transition-colors">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg md:rounded-xl border-2 border-gray-200 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 text-gray-900 placeholder-gray-400 hover:border-gray-300 text-sm md:text-base"
-                    placeholder="Your awesome name"
-                    value={formData.name}
-                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  />
-                </motion.div>
-                
-                <motion.div 
-                  className="group"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2 group-hover:text-blue-600 transition-colors">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 text-gray-900 placeholder-gray-400 hover:border-gray-300"
-                    placeholder="your@email.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  />
-                </motion.div>
-
-                <motion.div 
-                  className="group"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2 group-hover:text-blue-600 transition-colors">
-                    Phone Number <span className="text-gray-400 font-normal">(optional)</span>
-                  </label>
-                  <div className="flex gap-2">
-                    <select
-                      value={formData.countryCode}
-                      onChange={(e) => setFormData(prev => ({ ...prev, countryCode: e.target.value }))}
-                      className="px-3 py-3 rounded-xl border-2 border-gray-200 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 text-gray-900 hover:border-gray-300 bg-white"
-                    >
-                      {countryCodes.map(({ code, country }) => (
-                        <option key={code} value={code}>
-                          {country} ({code})
-                        </option>
-                      ))}
-                    </select>
-                    <input
-                      type="tel"
-                      id="phone"
-                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 text-gray-900 placeholder-gray-400 hover:border-gray-300"
-                      placeholder="Your phone number"
-                      value={formData.phone}
-                      onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                    />
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="group"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2 group-hover:text-blue-600 transition-colors">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    required
-                    rows="4"
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 resize-none text-gray-900 placeholder-gray-400 hover:border-gray-300"
-                    placeholder="Tell me about your amazing project..."
-                    value={formData.message}
-                    onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                  />
-                </motion.div>
+              {/* Name Input */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  placeholder="John Doe"
+                />
               </div>
 
-              {/* Submit button */}
+              {/* Email Input */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  placeholder="john@example.com"
+                />
+              </div>
+
+              {/* Message Input */}
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows="4"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                  placeholder="Tell me about your project..."
+                ></textarea>
+              </div>
+
+              {/* Submit Button */}
               <motion.button
                 type="submit"
-                disabled={status === 'loading' || status === 'success'}
-                className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
+                className="w-full relative overflow-hidden group bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg py-2.5 sm:py-3 px-4 sm:px-6 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                disabled={status === 'loading'}
               >
                 {/* Button gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -225,7 +175,7 @@ const EmailModal = ({ isOpen, onClose }) => {
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-6 h-6 border-2 border-white border-t-transparent rounded-full"
+                      className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-white border-t-transparent rounded-full"
                     />
                   </div>
                 )}
@@ -236,7 +186,7 @@ const EmailModal = ({ isOpen, onClose }) => {
                 <motion.p 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-red-500 text-sm text-center bg-red-50 py-3 px-4 rounded-lg"
+                  className="text-red-500 text-xs sm:text-sm text-center bg-red-50 py-2 sm:py-3 px-3 sm:px-4 rounded-lg"
                 >
                   Oops! Something went wrong. Please try again. 🤔
                 </motion.p>
@@ -260,7 +210,7 @@ const EmailModal = ({ isOpen, onClose }) => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.5, opacity: 0, y: 50 }}
               transition={{ type: "spring", duration: 0.6, bounce: 0.4 }}
-              className="bg-gradient-to-br from-white via-blue-50 to-purple-50 rounded-3xl shadow-2xl p-10 text-center max-w-lg mx-auto relative overflow-hidden"
+              className="bg-gradient-to-br from-white via-blue-50 to-purple-50 rounded-2xl shadow-2xl p-6 sm:p-10 text-center max-w-[95%] sm:max-w-lg mx-auto relative overflow-hidden"
             >
               {/* Animated background elements */}
               <div className="absolute inset-0 overflow-hidden">

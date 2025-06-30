@@ -70,13 +70,53 @@ function App() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <motion.div
-            className="text-4xl font-display text-white"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            Loading...
-          </motion.div>
+          <div className="flex items-center gap-4">
+            <motion.div
+              className="w-5 h-5 rounded-full bg-cyan-500"
+              animate={{
+                y: [-20, 0, -20],
+                scale: [1, 1.2, 1],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                ease: "easeInOut",
+                times: [0, 0.5, 1],
+                delay: 0,
+              }}
+            />
+            <motion.div
+              className="w-5 h-5 rounded-full bg-purple-500"
+              animate={{
+                y: [-20, 0, -20],
+                scale: [1, 1.2, 1],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                ease: "easeInOut",
+                times: [0, 0.5, 1],
+                delay: 0.2,
+              }}
+            />
+            <motion.div
+              className="w-5 h-5 rounded-full bg-blue-500"
+              animate={{
+                y: [-20, 0, -20],
+                scale: [1, 1.2, 1],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                ease: "easeInOut",
+                times: [0, 0.5, 1],
+                delay: 0.4,
+              }}
+            />
+          </div>
         </motion.div>
       ) : (
         <motion.div

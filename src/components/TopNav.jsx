@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 
 const sections = [
   { 
@@ -72,7 +72,7 @@ const ScrollProgress = () => {
 
 const TopNav = () => {
   const [activeSection, setActiveSection] = useState('hero');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   const navY = useTransform(scrollY, [0, 100], [0, -10]);
   const navOpacity = useTransform(scrollY, [0, 50, 100], [1, 0.8, 0.95]);
@@ -112,9 +112,6 @@ const TopNav = () => {
     const element = document.getElementById(targetId);
     if (!element) return;
 
-    // Close mobile menu if it's open
-    setMobileMenuOpen(false);
-
     const targetPosition = element.offsetTop - 80;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
@@ -147,115 +144,131 @@ const TopNav = () => {
     <div className="w-full bg-black/90 py-4">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - Updated with mobile-friendly sizes */}
           <div className="flex items-center">
             <div className="relative">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-cyan-500 rounded-lg flex items-center justify-center text-white text-lg md:text-xl font-bold mr-2 md:mr-3">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-500 rounded-lg flex items-center justify-center text-white text-base sm:text-xl font-bold mr-2 sm:mr-3">
                 KD
                 {/* Online status indicator */}
-                <div className="absolute -top-1 right-1 w-2 h-2 md:w-2.5 md:h-2.5 bg-emerald-400 rounded-full ring-2 ring-black animate-pulse"></div>
+                <div className="absolute -top-1 right-1 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-emerald-400 rounded-full ring-2 ring-black animate-pulse"></div>
               </div>
             </div>
             <div>
-              <h1 className="text-white text-base md:text-xl font-bold">Kayode Daniel</h1>
-              <p className="text-cyan-400 text-xs md:text-sm">Digital Craftsman</p>
+              <h1 className="text-white text-lg sm:text-xl font-bold">Kayode Daniel</h1>
+              <p className="text-cyan-400 text-xs sm:text-sm">Digital Craftsman</p>
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="block md:hidden">
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-white/5 backdrop-blur-xl border border-white/10"
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <motion.div
+              className="flex justify-center"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              {mobileMenuOpen ? (
-                <X className="w-5 h-5 text-white" />
-              ) : (
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+              <motion.div
+                className="bg-white/5 backdrop-blur-xl rounded-full px-6 py-3 shadow-2xl border border-white/10"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="flex items-center gap-2">
+                  {sections.map((section) => {
+                    const isActive = activeSection === section.id;
+                    return (
+                      <div key={section.id} className="relative">
+                        <motion.button
+                          onClick={() => smoothScrollTo(section.id)}
+                          className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                            isActive 
+                              ? 'text-white' 
+                              : 'text-white/60 hover:text-white/80'
+                          }`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          {isActive && (
+                            <motion.div
+                              layoutId="activeBackground"
+                              className={`absolute inset-0 bg-gradient-to-r ${section.color} rounded-full shadow-lg`}
+                              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            />
+                          )}
+                          <span className="relative z-10 flex items-center gap-2">
+                            {section.icon}
+                            <span>{section.label}</span>
+                          </span>
+                        </motion.button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
 
-          {/* Desktop Navigation */}
-          <motion.div
-            className="hidden md:flex justify-center"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
           >
-            <motion.div
-              className="bg-white/5 backdrop-blur-xl rounded-full px-6 py-3 shadow-2xl border border-white/10"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
+            <svg
+              className="w-6 h-6 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <div className="flex items-center gap-2">
-                {sections.map((section) => {
-                  const isActive = activeSection === section.id;
-                  return (
-                    <div key={section.id} className="relative">
-                      <motion.button
-                        onClick={() => smoothScrollTo(section.id)}
-                        className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                          isActive 
-                            ? 'text-white' 
-                            : 'text-white/60 hover:text-white/80'
-                        }`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        {isActive && (
-                          <motion.div
-                            layoutId="activeBackground"
-                            className={`absolute inset-0 bg-gradient-to-r ${section.color} rounded-full shadow-lg`}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                          />
-                        )}
-                        <span className="relative z-10 flex items-center gap-2">
-                          {section.icon}
-                          <span className="inline">{section.label}</span>
-                        </span>
-                      </motion.button>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </motion.div>
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
 
         {/* Mobile Menu */}
         <AnimatePresence>
-          {mobileMenuOpen && (
+          {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden mt-4 overflow-hidden"
+              className="md:hidden mt-4"
             >
-              <div className="bg-white/5 backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
-                <div className="flex flex-col space-y-2">
-                  {sections.map((section) => {
-                    const isActive = activeSection === section.id;
-                    return (
-                      <motion.button
-                        key={section.id}
-                        onClick={() => smoothScrollTo(section.id)}
-                        className={`relative px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-3 ${
-                          isActive 
-                            ? 'bg-gradient-to-r ' + section.color + ' text-white' 
-                            : 'text-white/80 hover:bg-white/10'
-                        }`}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        {section.icon}
-                        <span>{section.label}</span>
-                      </motion.button>
-                    );
-                  })}
-                </div>
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden">
+                {sections.map((section) => {
+                  const isActive = activeSection === section.id;
+                  return (
+                    <motion.button
+                      key={section.id}
+                      onClick={() => {
+                        smoothScrollTo(section.id);
+                        setIsMenuOpen(false);
+                      }}
+                      className={`w-full px-4 py-3 flex items-center gap-3 ${
+                        isActive 
+                          ? 'bg-white/10 text-white' 
+                          : 'text-white/60 hover:text-white hover:bg-white/5'
+                      } transition-colors`}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {section.icon}
+                      <span>{section.label}</span>
+                    </motion.button>
+                  );
+                })}
               </div>
             </motion.div>
           )}
