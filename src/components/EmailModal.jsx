@@ -19,27 +19,27 @@ const EmailModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    countryCode: '+234', // Default to Nigeria
-    phone: '',
     message: ''
   })
   const [status, setStatus] = useState('idle') // idle, loading, success, error
 
   const handleSuccessClose = () => {
     setStatus('idle')
-    setFormData({ name: '', email: '', countryCode: '+234', phone: '', message: '' })
+    setFormData({ name: '', email: '', message: '' })
     onClose()
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('loading')
-
-    // Format phone number by combining country code (removing '+') with phone number
-    const formattedData = {
-      ...formData,
-      phone: formData.phone ? `${formData.countryCode.replace('+', '')}${formData.phone.replace(/\s+/g, '')}` : ''
-    }
 
     try {
       const response = await fetch('https://sbbsn.app.n8n.cloud/webhook/kayode', {
@@ -47,7 +47,7 @@ const EmailModal = ({ isOpen, onClose }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formattedData),
+        body: JSON.stringify(formData),
       })
 
       if (!response.ok) throw new Error('Failed to send')
@@ -113,12 +113,14 @@ const EmailModal = ({ isOpen, onClose }) => {
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
+                </label>
+                <input
+                  type="text"
+                  id="name"
                   name="name"
-                    required
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                   placeholder="John Doe"
                 />
@@ -128,27 +130,31 @@ const EmailModal = ({ isOpen, onClose }) => {
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
+                </label>
+                <input
+                  type="email"
+                  id="email"
                   name="email"
-                    required
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                   placeholder="john@example.com"
-                    />
-                  </div>
+                />
+              </div>
 
               {/* Message Input */}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                   Your Message
-                  </label>
-                  <textarea
-                    id="message"
+                </label>
+                <textarea
+                  id="message"
                   name="message"
-                    required
-                    rows="4"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="4"
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none text-gray-900"
                   placeholder="Tell me about your project..."
                 ></textarea>
