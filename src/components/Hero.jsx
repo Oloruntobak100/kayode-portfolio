@@ -196,10 +196,12 @@ const NetworkBackground = () => {
 const Hero = () => {
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false)
   const typingWords = [
-    "Automation",
-    "Landing Page Design",
-    "Web Development",
-    "Email Marketing"
+    "Automate with n8n",
+    "Build flows in Make & Zapier",
+    "Design with React & Tailwind",
+    "Craft high-converting landing pages",
+    "Run smarter email campaigns",
+    "Deliver clean, modern UI/UX"
   ]
 
   const scrollToSection = (sectionId) => {
@@ -227,7 +229,7 @@ const Hero = () => {
                 className="space-y-4"
               >
                 <h1 className="text-4xl lg:text-5xl font-bold text-white">
-                  Hi, I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-primary-400 to-purple-400">Kayode Daniel</span> an expert in
+                  I automate your business & build beautiful web experiences.
                 </h1>
                 <div className="text-3xl lg:text-4xl font-bold relative">
                   <TypewriterText words={typingWords} />
@@ -241,7 +243,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-lg text-white/90 leading-relaxed"
               >
-                As a versatile developer and designer, I bring ideas to life through clean code and stunning visuals. With expertise in automation and web development, I create seamless digital experiences that drive results. My passion lies in crafting efficient solutions that help businesses thrive in the digital landscape.
+                Expert in no-code automation with n8n, Make, Zapier — plus sleek websites using React, Tailwind, and modern email marketing.
               </motion.p>
 
               {/* CTA Buttons */}
