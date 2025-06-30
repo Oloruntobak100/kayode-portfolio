@@ -119,7 +119,7 @@ const EmailModal = ({ isOpen, onClose }) => {
                     id="name"
                   name="name"
                     required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                   placeholder="John Doe"
                 />
               </div>
@@ -134,7 +134,7 @@ const EmailModal = ({ isOpen, onClose }) => {
                     id="email"
                   name="email"
                     required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                   placeholder="john@example.com"
                     />
                   </div>
@@ -149,7 +149,7 @@ const EmailModal = ({ isOpen, onClose }) => {
                   name="message"
                     required
                     rows="4"
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none text-gray-900"
                   placeholder="Tell me about your project..."
                 ></textarea>
               </div>
