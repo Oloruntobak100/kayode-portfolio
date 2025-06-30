@@ -42,7 +42,7 @@ const EmailModal = ({ isOpen, onClose }) => {
     }
 
     try {
-      const response = await fetch('https://sbbsn.app.n8n.cloud/webhook-test/whatsapp_kay', {
+      const response = await fetch('https://sbbsn.app.n8n.cloud/webhook/kayode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -113,12 +113,12 @@ const EmailModal = ({ isOpen, onClose }) => {
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
                   name="name"
-                  required
+                    required
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="John Doe"
                 />
@@ -128,27 +128,27 @@ const EmailModal = ({ isOpen, onClose }) => {
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
                   name="email"
-                  required
+                    required
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="john@example.com"
-                />
-              </div>
+                    />
+                  </div>
 
               {/* Message Input */}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                   Your Message
-                </label>
-                <textarea
-                  id="message"
+                  </label>
+                  <textarea
+                    id="message"
                   name="message"
-                  required
-                  rows="4"
+                    required
+                    rows="4"
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
                   placeholder="Tell me about your project..."
                 ></textarea>
