@@ -110,6 +110,29 @@ const Testimonials = () => {
   const [direction, setDirection] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px',
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!isAutoPlay || isTransitioning) return;
@@ -149,7 +172,11 @@ const Testimonials = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="relative py-16 sm:py-24 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" id="testimonials">
+    <section 
+      ref={sectionRef}
+      className={`relative py-12 sm:py-20 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 ${!isVisible ? 'hidden' : ''}`} 
+      id="testimonials"
+    >
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Subtle Background Pattern */}
