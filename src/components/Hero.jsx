@@ -199,7 +199,7 @@ const Hero = () => {
     "Automate with n8n",
     "Build flows in Make & Zapier",
     "Design with React & Tailwind",
-    "Craft high-converting landing pages",
+    "High-converting landing pages",
     "Run smarter email campaigns",
     "Deliver clean, modern UI/UX"
   ]
@@ -229,10 +229,10 @@ const Hero = () => {
                 className="space-y-4"
               >
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-                  Hi, I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">Kayode Daniel</span>
+                  Hi, I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white-500 to-white-600">Kayode Daniel</span>
                 </h1>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-2">
-                  I automate your business & build beautiful web experiences.
+                  I Build Automations That Powers Your Business. So you can focus on what really matters. Let's Automate Your Entire Workflows
                 </h2>
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-bold relative">
                   <TypewriterText words={typingWords} />
@@ -246,7 +246,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-base sm:text-lg text-white/90 leading-relaxed"
               >
-                Expert in no-code automation with n8n, Make, Zapier — plus sleek websites using React, Tailwind, and modern email marketing.
+                Expert in no-code automation with n8n, Make, Zapier — plus development and design of sleek websites & Landng Pages using React, Tailwind, and JavaScript.
               </motion.p>
 
               {/* CTA Buttons */}
