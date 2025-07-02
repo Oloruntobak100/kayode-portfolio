@@ -3,8 +3,6 @@ import { X, ExternalLink, Github, Code, Palette, Mail, ArrowRight, Star, Calenda
 
 // Placeholder images - replace with your actual images
 const automationIcon = 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=300&fit=crop';
-const designIcon = 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop';
-const marketingIcon = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop';
 
 // Sample data - replace with your actual data
 const categories = [
@@ -51,7 +49,7 @@ const categories = [
           'Security middleware',
           'API versioning'
         ],
-        image: designIcon,
+        image: automationIcon,
         demoUrl: 'https://www.awesomescreenshot.com/video/41414527?key=7ac359df50446c67677d833986ddcb03',
         githubUrl: 'https://www.awesomescreenshot.com/video/41414527?key=7ac359df50446c67677d833986ddcb03',
         status: 'Completed',
@@ -72,7 +70,7 @@ const categories = [
           'Security middleware',
           'API versioning'
         ],
-        image: designIcon,
+        image: automationIcon,
         demoUrl: 'https://www.awesomescreenshot.com/video/41329639?key=aacaaad3f47cef612e09c60b6752f61b',
         githubUrl: 'https://www.awesomescreenshot.com/video/41329639?key=aacaaad3f47cef612e09c60b6752f61b',
         status: 'Completed',
@@ -93,125 +91,61 @@ const categories = [
           'Security middleware',
           'API versioning'
         ],
-        image: designIcon,
+        image: automationIcon,
         demoUrl: 'https://www.awesomescreenshot.com/video/41332014?key=df11935bf9bf739d4c798568dd52efd7',
         githubUrl: 'https://www.awesomescreenshot.com/video/41332014?key=df11935bf9bf739d4c798568dd52efd7',
         status: 'Completed',
         duration: '2 days',
         teamSize: '1 developer'
-      }
-    ]
-  },
-  {
-    id: 'design',
-    title: 'Landing Page & Web Design',
-    description: 'Modern, conversion-focused landing pages and web applications with stunning UI/UX.',
-    icon: designIcon,
-    gradient: 'from-pink-400 via-rose-500 to-orange-500',
-    glowColor: 'shadow-pink-500/30',
-    projects: [
-      {
-        id: 3,
-        title: 'SaaS Landing Page',
-        description: 'High-converting landing page for a B2B SaaS platform with interactive elements and A/B testing.',
-        longDescription: 'A conversion-optimized landing page that increased sign-ups by 340% through strategic UX design, compelling copy, and seamless user journey optimization.',
-        technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Next.js', 'TypeScript'],
-        features: [
-          'Responsive design',
-          'Interactive animations',
-          'A/B testing integration',
-          'Performance optimized',
-          'SEO friendly',
-          'Analytics tracking'
-        ],
-        image: designIcon,
-        demoUrl: 'https://drive.google.com',
-        githubUrl: 'https://github.com',
-        status: 'Completed',
-        duration: '1 month',
-        teamSize: '2 designers'
       },
       {
-        id: 4,
-        title: 'E-commerce Dashboard',
-        description: 'Modern admin dashboard for e-commerce management with real-time analytics and inventory control.',
-        longDescription: 'An intuitive dashboard that streamlines e-commerce operations with real-time insights, automated reporting, and user-friendly interface design.',
-        technologies: ['React', 'D3.js', 'Material-UI', 'Firebase', 'Chart.js'],
-        features: [
-          'Real-time analytics',
-          'Inventory management',
-          'Order tracking',
-          'Customer insights',
-          'Revenue forecasting',
-          'Multi-store support'
-        ],
-        image: marketingIcon,
-        demoUrl: 'https://google.com',
-        githubUrl: 'https://github.com',
-        status: 'Completed',
-        duration: '4 months',
-        teamSize: '5 developers'
-      }
-    ]
-  },
-  {
-    id: 'marketing',
-    title: 'Email Marketing & Sales Funnel',
-    description: 'Strategic email campaigns and sales funnels that drive conversions and nurture leads.',
-    icon: marketingIcon,
-    gradient: 'from-emerald-400 via-teal-500 to-cyan-600',
-    glowColor: 'shadow-emerald-500/30',
-    projects: [
-      {
         id: 5,
-        title: 'Marketing Automation Suite',
-        description: 'End-to-end marketing automation platform with advanced segmentation and analytics.',
-        longDescription: 'A comprehensive marketing automation platform that helps businesses nurture leads, segment audiences, and optimize campaigns for maximum ROI.',
-        technologies: ['React', 'Node.js', 'MongoDB', 'AWS', 'SendGrid', 'Stripe'],
+        title: 'Social Media Content Scheduler',
+        description: 'An automated chatbot that manages customer interactions and support on WhatsApp.',
+        longDescription: 'A robust API gateway solution that handles millions of requests daily, providing seamless integration between various e-commerce services while maintaining optimal performance.',
+        technologies: ['n8n', 'Google Sheets', 'WhatsApp', 'Gmail', 'Google calendar'],
         features: [
-          'Customer segmentation',
-          'Email campaign automation',
-          'A/B testing',
-          'Analytics dashboard',
-          'Lead scoring',
-          'Multi-channel campaigns'
+          'Rate limiting and throttling',
+          'Request/response transformation',
+          'Real-time analytics',
+          'Auto-scaling capabilities',
+          'Security middleware',
+          'API versioning'
         ],
-        image: marketingIcon,
-        demoUrl: 'https://youtube.com',
-        githubUrl: 'https://github.com',
+        image: automationIcon,
+        demoUrl: 'https://www.awesomescreenshot.com/video/41616864?key=5cba0dc4ae00810876d7a44facbede99',
+        githubUrl: 'https://www.awesomescreenshot.com/video/41616864?key=5cba0dc4ae00810876d7a44facbede99',
         status: 'Completed',
-        duration: '6 months',
-        teamSize: '6 developers'
+        duration: '2 days',
+        teamSize: '1 developer'
       },
       {
         id: 6,
-        title: 'Sales Funnel Optimizer',
-        description: 'AI-powered sales funnel optimization tool that increases conversion rates through intelligent insights.',
-        longDescription: 'An advanced analytics platform that uses machine learning to identify conversion bottlenecks and suggests optimizations for maximum sales performance.',
-        technologies: ['Python', 'TensorFlow', 'React', 'PostgreSQL', 'Redis'],
+        title: 'Social Media Auto Posting',
+        description: ' it automatically writes articles, creates images, and posts to LinkedIn and Facebook.',
+        longDescription: 'A robust API gateway solution that handles millions of requests daily, providing seamless integration between various e-commerce services while maintaining optimal performance.',
+        technologies: ['n8n', 'Google Sheets', 'Facebook', 'LinkedIn'],
         features: [
-          'AI-powered insights',
-          'Conversion tracking',
-          'Funnel visualization',
-          'Performance predictions',
-          'Automated recommendations',
-          'ROI optimization'
+          'Rate limiting and throttling',
+          'Request/response transformation',
+          'Real-time analytics',
+          'Auto-scaling capabilities',
+          'Security middleware',
+          'API versioning'
         ],
         image: automationIcon,
-        demoUrl: 'https://drive.google.com',
-        githubUrl: 'https://github.com',
-        status: 'In Progress',
-        duration: '4 months',
-        teamSize: '4 developers'
+        demoUrl: 'https://www.awesomescreenshot.com/video/41618891?key=18778ddbf800b686c00f14b4cf967e4d',
+        githubUrl: 'https://www.awesomescreenshot.com/video/41618891?key=18778ddbf800b686c00f14b4cf967e4d',
+        status: 'Completed',
+        duration: '2 days',
+        teamSize: '1 developer'
       }
     ]
   }
 ];
 
 const iconMap = {
-  'automation': Code,
-  'design': Palette,
-  'marketing': Mail
+  'automation': Code
 };
 
 const Portfolio = () => {
